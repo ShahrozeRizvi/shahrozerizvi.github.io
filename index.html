@@ -92,6 +92,20 @@
       background: var(--accent-bg);
     }
 
+    .topbar-location {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text2);
+      letter-spacing: 0.01em;
+      padding-right: 16px;
+      border-right: 1px solid var(--border);
+      margin-right: 6px;
+    }
+    .topbar-location svg { color: var(--accent); flex-shrink: 0; }
+
     /* ── SHELL ── */
     .shell {
       display: flex;
@@ -376,6 +390,7 @@
     .plinks { display: flex; gap: 8px; }
     .plinks a { font-size: 11px; color: var(--text3); text-decoration: none; font-weight: 600; transition: color 0.15s; }
     .plinks a:hover { color: var(--accent); }
+    .plinks-ext { font-size: 11px; color: var(--text3); font-weight: 600; }
 
     .pname { font-size: 15px; font-weight: 700; letter-spacing: -0.02em; }
     .pdesc { font-size: 12px; color: var(--text2); line-height: 1.8; flex: 1; }
@@ -739,6 +754,10 @@
 <!-- TOP NAV BAR -->
 <header class="topbar">
   <div class="topbar-links">
+    <div class="topbar-location">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      Based in Rome, Italia &nbsp;·&nbsp; Visa Status: Work Permit
+    </div>
     <a href="https://github.com/shahrozerizvi" target="_blank">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
       <span>GitHub</span>
@@ -780,9 +799,7 @@
       <a onclick="show('education')">Education & Credentials</a>
     </nav>
 
-    <div class="sidebar-bottom">
-      <p class="location">📍 Rome, Italy &nbsp;·&nbsp; 🇵🇰 Pakistani · EU Work Permit</p>
-    </div>
+    <div class="sidebar-bottom"></div>
   </aside>
 
   <!-- MAIN -->
@@ -798,9 +815,9 @@
         </div>
         <div class="stats-grid">
           <div class="stat-box"><div class="stat-num">8+</div><div class="stat-lbl">Years in Product & Project Management</div></div>
-          <div class="stat-box"><div class="stat-num">7h</div><div class="stat-lbl">Saved per week via automation</div></div>
-          <div class="stat-box"><div class="stat-num">6+</div><div class="stat-lbl">Projects shipped</div></div>
-          <div class="stat-box"><div class="stat-num">🇮🇹</div><div class="stat-lbl">Based in Rome, EU</div></div>
+          <div class="stat-box"><div class="stat-num">10+</div><div class="stat-lbl">Projects shipped</div></div>
+          <div class="stat-box"><div class="stat-num">9h+</div><div class="stat-lbl">Saved per week via automation</div></div>
+          <div class="stat-box"><div class="stat-num">16+</div><div class="stat-lbl">Enterprise clients served</div></div>
         </div>
       </div>
       <!-- PROJECT PREVIEW SLIDER -->
@@ -885,11 +902,16 @@
 <script>
 // ── PROJECTS DATA ──
 const projects = [
-  { name:"FlashJobs 2.0", category:"ai", desc:"WhatsApp bot that generates tailored CVs and cover letters using Claude AI. Send your profile and a job description — receive a fully formatted, ATS-optimised CV in under 60 seconds.", impact:[{value:"< 60s",label:"CV generated"},{value:"ATS",label:"Optimised"}], tags:["Claude AI","WhatsApp API","Node.js","PostgreSQL"], github:"#", live:null },
-  { name:"Jira → Announcements Pipeline", category:"automation", desc:"Make.com workflow that converts completed Jira tickets into polished product announcements, auto-published to Slack and Notion. Eliminated 7 hours of weekly manual writing.", impact:[{value:"7hrs",label:"Saved per week"},{value:"100%",label:"Automated"}], tags:["Make.com","Jira API","Slack","Notion","Claude AI"], github:null, live:null },
-  { name:"SLA Monitor & Alerting", category:"automation", desc:"Automated SLA tracking that monitors ticket resolution times, fires proactive Slack alerts before breaches, and generates weekly compliance reports for product and customer success teams.", impact:[{value:"0",label:"Missed SLAs"},{value:"Live",label:"Alerts"}], tags:["Make.com","Jira","Slack API","Webhooks"], github:null, live:null },
-  { name:"Gong Transcript Processor", category:"automation", desc:"Pulls sales call transcripts from Gong, extracts insights, objections, and action items via AI, then posts structured summaries to relevant Slack channels automatically.", impact:[{value:"131",label:"Calls per week"},{value:"AI",label:"Insights"}], tags:["Make.com","Gong API","Claude AI","Slack"], github:null, live:null },
-  { name:"vFairs Event Audit Tool", category:"product", desc:"Internal quality assurance system that automatically checks event configurations against a quality checklist before go-live, flagging issues to project teams with zero manual review.", impact:[{value:"QA",label:"Automated"},{value:"0",label:"Manual steps"}], tags:["Make.com","vFairs API","Google Sheets","Slack"], github:null, live:null }
+  { name:"FlashJobs 2.0", category:"ai", desc:"WhatsApp bot that generates tailored CVs and cover letters using Claude AI in under 60 seconds. Inspired by watching a friend spend 3 hours manually tailoring a single CV — I built the solution over a weekend. Send your profile and a job description, get a fully formatted, ATS-optimised CV instantly.", impact:[{value:"< 60s",label:"CV generated"},{value:"ATS",label:"Optimised"}], tags:["Claude AI","WhatsApp API","Node.js","PostgreSQL"], github:"https://github.com/ShahrozeRizvi/flashjobs", live:null, link:"https://www.linkedin.com/posts/syedshahroze_i-spent-3-hours-yesterday-watching-my-friend-activity-7427305408425463808-Fnel?utm_source=share&utm_medium=member_desktop&rcm=ACoAABnaQ-UBwe1cxC8v-x8_Ok7d_gXAXI2-Eqs", extraLink:"https://github.com/ShahrozeRizvi/flashjobs" },
+  { name:"Jira → Announcements Pipeline", category:"automation", desc:"My first agentic AI workflow, built with Claude Sonnet & Make.com. Detects when a Jira ticket moves to \'Announced\', extracts all fields, rewrites technical content into polished announcements, creates a Google Doc, and notifies the team — all in under 15 seconds. Replaced a 3-day, 3-person manual process taking 1–2 hours a week.", impact:[{value:"7hrs",label:"Saved per week"},{value:"15s",label:"Per ticket"}], tags:["Make.com","Jira API","Claude AI","Google Drive"], github:null, live:null, link:"https://www.linkedin.com/posts/syedshahroze_agenticai-workflowautomation-activity-7387892358601756672-zRxL?utm_source=share&utm_medium=member_desktop&rcm=ACoAABnaQ-UBwe1cxC8v-x8_Ok7d_gXAXI2-Eqs" },
+  { name:"Gong Transcript Processor", category:"automation", desc:"Our product marketing team was spending 3 hours every week copy-pasting 130+ Gong call transcripts into ChatGPT. I automated the entire pipeline — every Monday at 9 AM it pulls all transcripts, runs GPT-4o analysis, and creates two Google Docs: raw data + AI-powered insights. The team now acts on insights over coffee instead of copy-pasting for hours.", impact:[{value:"2h 40m",label:"Saved per week"},{value:"5,943%",label:"ROI"}], tags:["Make.com","Gong API","OpenAI GPT-4o","Google Workspace"], github:null, live:null, link:"https://www.linkedin.com/posts/syedshahroze_our-product-marketing-team-was-investing-activity-7403794179186667521-ievl?utm_source=share&utm_medium=member_desktop&rcm=ACoAABnaQ-UBwe1cxC8v-x8_Ok7d_gXAXI2-Eqs" },
+  { name:"FlashJobs 1.0", category:"automation", desc:"The original FlashJobs — a Make.com automation that takes a Google Form submission (email, industry, job title, current CV link) and within 60 seconds scrapes Indeed, FlexJobs, and LinkedIn for matching jobs posted in the last 7 days, then delivers 2 tailored, ATS-proof CV Google Docs straight to your inbox. No more manual job board trawling or ChatGPT prompting.", impact:[{value:"60s",label:"Jobs + CV in inbox"},{value:"3+",label:"Job boards scraped"}], tags:["Make.com","Google Forms","Google Docs","Web Scraping","Claude AI"], github:null, live:null, link:"https://www.linkedin.com/posts/syedshahroze_are-you-an-entry-to-senior-level-professional-activity-7393370026914938880-A9O_?utm_source=share&utm_medium=member_desktop&rcm=ACoAABnaQ-UBwe1cxC8v-x8_Ok7d_gXAXI2-Eqs" },
+  { name:"AI Recipe App — for Mom 🍛", category:"vibe", desc:"My very first vibe-coded app — built for my mom who stressed every day over \'Aaj khanay main kya pakayen?\' Select ingredients already in your kitchen and get instant recipe suggestions. Built the same idea in both Lovable and Replit to compare — Lovable won on UI, prompt understanding, and speed. Currently focused on South-Asian (Pakistani & Indian) cuisine, built with love.", impact:[{value:"1st",label:"Vibe-coded app"},{value:"😊",label:"Mom approved"}], tags:["Lovable","Replit","AI","Web App"], github:null, live:null, link:"https://www.linkedin.com/posts/syedshahroze_ai-webdevelopment-nocode-activity-7332062899303018496-fjJm?utm_source=share&utm_medium=member_desktop&rcm=ACoAABnaQ-UBwe1cxC8v-x8_Ok7d_gXAXI2-Eqs" },
+  { name:"SmartTrack", category:"vibe", desc:"Vibe-coded with Lovable & Vercel — a personal project tracker that connects all client Google Sheets in one dashboard, surfaces upcoming tasks for the next 5–7 days, auto-categorises them as high or medium priority based on days remaining, and syncs everything directly to Google Calendar as individual project events.", impact:[{value:"4+",label:"Sheets connected"},{value:"Auto",label:"Calendar sync"}], tags:["Lovable","Vercel","Google Sheets","Google Calendar"], github:null, live:null, link:"https://www.linkedin.com/posts/syedshahroze_i-built-smarttrack-a-personal-projects-activity-7402726751308546049-Jl9M?utm_source=share&utm_medium=member_desktop&rcm=ACoAABnaQ-UBwe1cxC8v-x8_Ok7d_gXAXI2-Eqs" },
+  { name:"Chandler Bing — SlackBot", category:"vibe", desc:"Could this BE any more fun? Built a Slack bot with the full personality of Chandler Bing from F.R.I.E.N.D.S. It auto-creates Slack channels for new projects, invites the relevant stakeholders, and greets everyone with witty, sarcastic Chandler-style welcome messages. Functional automation wrapped in a pop-culture personality. Pivot. PIVAAAATTTTT!!", impact:[{value:"😏",label:"Sarcasm level"},{value:"Auto",label:"Channel setup"}], tags:["Make.com","Slack API","AI Personality","Webhooks"], github:null, live:null, link:"https://www.linkedin.com/posts/syedshahroze_chandler-bing-our-very-own-slackbot-activity-7390153824729972736-65cO?utm_source=share&utm_medium=member_desktop&rcm=ACoAABnaQ-UBwe1cxC8v-x8_Ok7d_gXAXI2-Eqs" },
+  { name:"JSON → Excel Converter", category:"vibe", desc:"Built with Blink.new in one sitting while the dev ticket sat untouched in the backlog. A clean web app that converts raw JSON into a readable, formatted table and exports it as a downloadable Excel file — no dev dependency, no waiting. Scratched my own itch and shipped it the same day.", impact:[{value:"0",label:"Dev tickets needed"},{value:"1 day",label:"Built & shipped"}], tags:["Blink.new","JSON","Excel","Vibe Coding"], github:null, live:null, link:"https://www.linkedin.com/posts/syedshahroze_json-vibecoding-jsonextractor-activity-7383162870836006912-JGJe?utm_source=share&utm_medium=member_desktop&rcm=ACoAABnaQ-UBwe1cxC8v-x8_Ok7d_gXAXI2-Eqs" },
+  { name:"SLA Monitor & Alerting", category:"automation", desc:"Automated SLA tracking that monitors ticket resolution times, fires proactive Slack alerts before breaches, and generates weekly compliance reports for product and customer success teams.", impact:[{value:"0",label:"Missed SLAs"},{value:"Live",label:"Alerts"}], tags:["Make.com","Jira","Slack API","Webhooks"], github:null, live:null, link:"https://www.linkedin.com/in/syedshahroze/" },
+  { name:"First Portfolio Website", category:"vibe", desc:"The OG. Not built in 6 minutes with lo-fi beats — this was a real, honest 1-hour journey through HTML, font choices, colour rabbit holes, and alignment existential crises in Replit. Designed, coded, and cursed at until it looked decent. Recorded the whole process with Tella and shared the prompt with anyone who asked. Open to feedback, roasting, and applause — in that order.", impact:[{value:"1hr",label:"Honest build time"},{value:"😅",label:"Bugs encountered"}], tags:["Replit","HTML","CSS","Tella"], github:null, live:null, link:"https://www.linkedin.com/posts/syedshahroze_prompt-webdev-uxuidesign-activity-7338857780763680768-PkRJ?utm_source=share&utm_medium=member_desktop&rcm=ACoAABnaQ-UBwe1cxC8v-x8_Ok7d_gXAXI2-Eqs" }
 ];
 
 const catClass={automation:"pcat-automation",ai:"pcat-ai",product:"pcat-product",vibe:"pcat-vibe"};
@@ -898,10 +920,13 @@ const catLabel={automation:"Automation",ai:"AI",product:"Product",vibe:"Vibe Cod
 function renderProjects(filter){
   const list=filter==="all"?projects:projects.filter(p=>p.category===filter);
   document.getElementById("projectsGrid").innerHTML=list.map(p=>`
-    <div class="pcard">
+    <div class="pcard" onclick="window.open('${p.link||'#'}','_blank')" style="cursor:pointer">
       <div class="pcard-top">
         <span class="pcat ${catClass[p.category]}">${catLabel[p.category]}</span>
-        <div class="plinks">${p.github?`<a href="${p.github}" target="_blank">↗ GitHub</a>`:""} ${p.live?`<a href="${p.live}" target="_blank">↗ Live</a>`:""}</div>
+        <div class="plinks">
+          ${p.extraLink?`<a href="${p.extraLink}" target="_blank" onclick="event.stopPropagation()">↗ GitHub</a>`:''}
+          <span class="plinks-ext">↗ View post</span>
+        </div>
       </div>
       <div class="pname">${p.name}</div>
       <div class="pdesc">${p.desc}</div>
@@ -926,6 +951,10 @@ const stacks={
     {name:"n8n",logo:"https://cdn.simpleicons.org/n8n/EA4B71"},
     {name:"Claude AI",logo:"data:image/png;base64,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"},
     {name:"Zapier",logo:"https://cdn.simpleicons.org/zapier/FF4A00"},
+    {name:"Lovable",svgbadge:"<svg viewBox=\"0 0 36 36\" width=\"28\" height=\"28\"><rect width=\"36\" height=\"36\" rx=\"8\" fill=\"#FF4B4B\"/><text x=\"18\" y=\"24\" text-anchor=\"middle\" fill=\"white\" font-size=\"16\" font-family=\"Arial\" font-weight=\"bold\">L</text></svg>"},
+    {name:"Blink",svgbadge:"<svg viewBox=\"0 0 36 36\" width=\"28\" height=\"28\"><rect width=\"36\" height=\"36\" rx=\"8\" fill=\"#0066FF\"/><text x=\"18\" y=\"24\" text-anchor=\"middle\" fill=\"white\" font-size=\"16\" font-family=\"Arial\" font-weight=\"bold\">B</text></svg>"},
+    {name:"Replit",svgbadge:"<svg viewBox=\"0 0 36 36\" width=\"28\" height=\"28\"><rect width=\"36\" height=\"36\" rx=\"8\" fill=\"#F26207\"/><text x=\"18\" y=\"24\" text-anchor=\"middle\" fill=\"white\" font-size=\"16\" font-family=\"Arial\" font-weight=\"bold\">R</text></svg>"},
+    {name:"Reforge",svgbadge:"<svg viewBox=\"0 0 36 36\" width=\"28\" height=\"28\"><rect width=\"36\" height=\"36\" rx=\"8\" fill=\"#1A1A2E\"/><text x=\"18\" y=\"24\" text-anchor=\"middle\" fill=\"white\" font-size=\"16\" font-family=\"Arial\" font-weight=\"bold\">R</text></svg>"},
     {name:"Relevance AI",logo:"data:image/png;base64,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"},
   ],
   sDev:[
@@ -958,7 +987,9 @@ const stacks={
 Object.entries(stacks).forEach(([id,items])=>{
   document.getElementById(id).innerHTML=items.map(t=>`
     <div class="sitem">
-      <div class="slogo">${t.logo?`<img src="${t.logo}" alt="${t.name}" onerror="this.outerHTML='<span>${t.emoji||"🔧"}</span>'">`:`<span>${t.emoji||"🔧"}</span>`}</div>
+      <div class="slogo">${t.logo?`<img src="${t.logo}" alt="${t.name}" onerror="this.outerHTML='<span>${t.emoji||"🔧"}</span>'">`
+        :t.svgbadge?t.svgbadge
+        :`<span>${t.emoji||"🔧"}</span>`}</div>
       <div class="sname">${t.name}</div>
     </div>`).join("");
 });
@@ -1054,7 +1085,7 @@ let icons = [];
 function initIcons() {
   icons = [];
   const W = canvas.width, H = canvas.height;
-  const count = Math.floor((W * H) / 14000);
+  const count = Math.floor((W * H) / 7000);
   for (let i = 0; i < count; i++) {
     icons.push({
       x: Math.random() * W,
@@ -1120,7 +1151,7 @@ drawFrame();
 </script>
 <!-- FOOTER -->
 <footer class="site-footer">
-  Made with <span class="footer-heart">♥</span> by Shahroze Rizvi
+  Made with <span class="footer-heart">♥</span> by Shahroze Rizvi · 2026
 </footer>
 
 </body>

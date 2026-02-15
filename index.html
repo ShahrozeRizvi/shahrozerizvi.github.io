@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shahroze Rizvi — Product Evangelist & Automation Architect</title>
+  <meta name="description" content="Product evangelist by day, automation architect by night. Building products, automations, AI tools and vibe-coded experiments from Rome."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080c10;
+      --bg-secondary: #0d1117;
+      --bg-card: #111820;
+      --border: rgba(255,255,255,0.07);
+      --text: #cdd6f4;
+      --text-muted: #6e7d9b;
+      --text-faint: #3d4f6b;
+      --accent: #00f5c4;
+      --accent-dim: rgba(0, 245, 196, 0.1);
+      --accent-glow: rgba(0, 245, 196, 0.15);
+      --red: #ff6b6b;
+      --blue: #4a9eff;
+      --font-display: 'Syne', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --sidebar-w: 340px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-mono);
+      font-size: 14px;
+      line-height: 1.7;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ─── CURSOR GLOW ─── */
+    .cursor-glow {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0,245,196,0.04) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: left 0.15s ease, top 0.15s ease;
+      z-index: 0;
+    }
+
+    /* ─── LAYOUT ─── */
+    .layout {
+      display: flex;
+      min-height: 100vh;
+      max-width: 1300px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* ─── SIDEBAR ─── */
+    .sidebar {
+      width: var(--sidebar-w);
+      min-width: var(--sidebar-w);
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 80px 40px 60px;
+      z-index: 10;
+      border-right: 1px solid var(--border);
+    }
+
+    .sidebar-top {}
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(0,245,196,0.07);
+      border: 1px solid rgba(0,245,196,0.2);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      margin-bottom: 28px;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    .name {
+      font-family: var(--font-display);
+      font-size: 36px;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .name span {
+      color: var(--accent);
+    }
+
+    .role-line {
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    /* Typewriter */
+    .typewriter-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 32px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .typewriter-prefix { color: var(--accent); }
+
+    #typewriter {
+      color: #fff;
+      font-weight: 500;
+      min-width: 160px;
+    }
+
+    .cursor-blink {
+      display: inline-block;
+      width: 2px;
+      height: 14px;
+      background: var(--accent);
+      margin-left: 2px;
+      animation: blink 1s step-end infinite;
+      vertical-align: middle;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; } 50% { opacity: 0; }
+    }
+
+    .bio {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 40px;
+      border-left: 2px solid var(--accent);
+      padding-left: 16px;
+    }
+
+    /* NAV */
+    .nav {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 40px;
+    }
+
+    .nav a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 8px 0;
+      transition: color 0.2s, padding-left 0.2s;
+      position: relative;
+    }
+
+    .nav a::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--text-faint);
+      transition: width 0.3s, background 0.2s;
+    }
+
+    .nav a:hover, .nav a.active {
+      color: var(--accent);
+      padding-left: 6px;
+    }
+
+    .nav a:hover::before, .nav a.active::before {
+      width: 40px;
+      background: var(--accent);
+    }
+
+    /* SOCIALS */
+    .socials {
+      display: flex;
+      gap: 16px;
+    }
+
+    .socials a {
+      color: var(--text-faint);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .socials a:hover { color: var(--accent); }
+
+    /* ─── MAIN CONTENT ─── */
+    .main {
+      flex: 1;
+      padding: 80px 80px 120px 80px;
+      overflow-y: auto;
+    }
+
+    /* ─── HERO SPLIT ─── */
+    .hero {
+      margin-bottom: 100px;
+      position: relative;
+    }
+
+    .hero-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      border-radius: 16px;
+      overflow: hidden;
+      height: 280px;
+      margin-bottom: 40px;
+      border: 1px solid var(--border);
+    }
+
+    .hero-half {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 36px;
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+      transition: flex 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .hero-half::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .hero-half:hover::before { opacity: 1; }
+
+    .hero-left {
+      background: linear-gradient(135deg, #0d1a2e 0%, #091522 100%);
+      border-right: 1px solid var(--border);
+    }
+
+    .hero-left::before {
+      background: linear-gradient(135deg, rgba(0,245,196,0.08) 0%, transparent 60%);
+    }
+
+    .hero-right {
+      background: linear-gradient(135deg, #1a0d1a 0%, #150915 100%);
+    }
+
+    .hero-right::before {
+      background: linear-gradient(135deg, rgba(255,107,107,0.08) 0%, transparent 60%);
+    }
+
+    .hero-tag {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      opacity: 0.5;
+    }
+
+    .hero-left .hero-tag { color: var(--accent); }
+    .hero-right .hero-tag { color: var(--red); }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1.1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-left .hero-title { color: var(--accent); }
+    .hero-right .hero-title { color: var(--red); }
+
+    .hero-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-bg-text {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-family: var(--font-display);
+      font-size: 80px;
+      font-weight: 800;
+      opacity: 0.04;
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* ─── SECTION ─── */
+    section {
+      margin-bottom: 100px;
+      scroll-margin-top: 80px;
+    }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 40px;
+      letter-spacing: -0.02em;
+    }
+
+    /* ─── ABOUT ─── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .about-text p span { color: var(--accent); }
+
+    .about-facts {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .fact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      transition: border-color 0.2s;
+    }
+
+    .fact-item:hover { border-color: rgba(0,245,196,0.2); }
+
+    .fact-icon {
+      font-size: 18px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .fact-label {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-bottom: 3px;
+    }
+
+    .fact-value {
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    /* ─── PROJECT CATEGORIES ─── */
+    .category-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+
+    .cat-tab {
+      padding: 6px 16px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+      background: transparent;
+      font-family: var(--font-mono);
+    }
+
+    .cat-tab:hover { border-color: var(--accent); color: var(--accent); }
+    .cat-tab.active { background: var(--accent); color: var(--bg); border-color: var(--accent); font-weight: 500; }
+
+    /* ─── PROJECT CARDS ─── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      border-color: rgba(0,245,196,0.3);
+      transform: translateY(-4px);
+    }
+
+    .project-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--accent-glow) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+
+    .project-card:hover::after { opacity: 1; }
+
+    .project-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+
+    .project-cat-badge {
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    .cat-automation { background: rgba(0,245,196,0.1); color: var(--accent); }
+    .cat-ai { background: rgba(74,158,255,0.1); color: var(--blue); }
+    .cat-product { background: rgba(255,107,107,0.1); color: var(--red); }
+    .cat-vibe { background: rgba(168,85,247,0.1); color: #a855f7; }
+
+    .project-links {
+      display: flex;
+      gap: 10px;
+    }
+
+    .project-links a {
+      color: var(--text-faint);
+      text-decoration: none;
+      font-size: 11px;
+      transition: color 0.2s;
+    }
+
+    .project-links a:hover { color: var(--accent); }
+
+    .project-name {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .project-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+
+    .project-impact {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+      padding: 12px;
+      background: rgba(0,0,0,0.3);
+      border-radius: 8px;
+    }
+
+    .impact-item {
+      text-align: center;
+      flex: 1;
+    }
+
+    .impact-value {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 3px;
+    }
+
+    .impact-label {
+      font-size: 9px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      font-size: 10px;
+      letter-spacing: 0.05em;
+      padding: 3px 10px;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+
+    /* ─── TOOLS SECTION ─── */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px;
+    }
+
+    .tool-item {
+      padding: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+    .tool-item:hover {
+      border-color: rgba(0,245,196,0.3);
+      transform: translateY(-2px);
+    }
+
+    .tool-icon { font-size: 22px; margin-bottom: 8px; }
+
+    .tool-name {
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── EXPERIENCE ─── */
+    .exp-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 24px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+
+    .exp-item:hover { padding-left: 8px; }
+
+    .exp-date {
+      font-size: 11px;
+      color: var(--text-faint);
+      letter-spacing: 0.05em;
+      padding-top: 2px;
+    }
+
+    .exp-role {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .exp-company {
+      font-size: 12px;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .exp-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--text-faint);
+    }
+
+    footer span { color: var(--accent); }
+
+    /* ─── HIDDEN CLASS ─── */
+    .project-card.hidden { display: none; }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .layout { flex-direction: column; }
+      .sidebar {
+        width: 100%;
+        min-width: unset;
+        height: auto;
+        position: relative;
+        padding: 40px 40px 32px;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+      .nav { flex-direction: row; flex-wrap: wrap; gap: 8px; }
+      .nav a { padding: 6px 12px; border: 1px solid var(--border); border-radius: 20px; }
+      .nav a::before { display: none; }
+      .main { padding: 40px 40px 80px; }
+      .about-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .hero-split { height: auto; grid-template-columns: 1fr; }
+      .main { padding: 32px 24px 80px; }
+      .sidebar { padding: 32px 24px; }
+      footer { flex-direction: column; gap: 12px; text-align: center; padding: 32px 24px; }
+    }
+
+    /* ─── FADE IN ─── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<div class="layout">
+
+  <!-- ─── SIDEBAR ─── -->
+  <aside class="sidebar">
+    <div class="sidebar-top">
+      <div class="status-badge">
+        <div class="status-dot"></div>
+        Open to opportunities
+      </div>
+
+      <h1 class="name">Shahroze<br><span>Rizvi</span></h1>
+      <p class="role-line">Product · Automation · AI · Vibe</p>
+
+      <div class="typewriter-wrap">
+        <span class="typewriter-prefix">~/</span>
+        <span id="typewriter"></span>
+        <span class="cursor-blink"></span>
+      </div>
+
+      <p class="bio">
+        Product evangelist by day, automation architect by night — I believe 7 hours of manual work is just a poorly designed workflow. I speak fluent Make.com, ship products people love, and solve problems before most people finish describing them. Currently based in Rome, where even the coffee hits like a well-timed automation trigger.
+      </p>
+
+      <nav class="nav">
+        <a href="#about" class="active">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#tools">Tools</a>
+      </nav>
+    </div>
+
+    <div class="socials">
+      <a href="https://github.com/shahrozerizvi" target="_blank">↗ GitHub</a>
+      <a href="https://linkedin.com/in/shahrozerizvi" target="_blank">↗ LinkedIn</a>
+      <a href="mailto:hello@shahrozerizvi.com">✉ Email</a>
+    </div>
+  </aside>
+
+  <!-- ─── MAIN ─── -->
+  <main class="main">
+
+    <!-- HERO SPLIT -->
+    <div class="hero">
+      <div class="hero-split">
+        <div class="hero-half hero-left">
+          <div class="hero-bg-text">BUILD</div>
+          <div class="hero-tag">// maker of things</div>
+          <div class="hero-title">Product<br>Evangelist</div>
+          <div class="hero-sub">Shipping products that matter</div>
+        </div>
+        <div class="hero-half hero-right">
+          <div class="hero-bg-text">AUTO</div>
+          <div class="hero-tag">// eliminator of boring</div>
+          <div class="hero-title">Automation<br>Architect</div>
+          <div class="hero-sub">Making machines do the work</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about" class="fade-in">
+      <p class="section-label">// who I am</p>
+      <h2 class="section-title">About Me</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>I'm a <span>Product Evangelist</span> at vFairs — a SaaS platform for virtual and hybrid events — where I translate complex technical capabilities into things humans actually want to use.</p>
+          <p>Beyond my day job, I build <span>automation systems</span> that eliminate manual work, AI-powered tools that solve real problems, and the occasional vibe-coded experiment that I can't help but ship.</p>
+          <p>I have 8+ years in project and product management, an <span>MS in International Project Management</span>, and a habit of seeing any repetitive process as a personal challenge to automate.</p>
+        </div>
+        <div class="about-facts">
+          <div class="fact-item">
+            <div class="fact-icon">📍</div>
+            <div>
+              <div class="fact-label">Based in</div>
+              <div class="fact-value">Rome, Italy 🇮🇹 (Pakistani 🇵🇰)</div>
+            </div>
+          </div>
+          <div class="fact-item">
+            <div class="fact-icon">✈️</div>
+            <div>
+              <div class="fact-label">Hobbies</div>
+              <div class="fact-value">Travel · Fitness · Sketching · Reading</div>
+            </div>
+          </div>
+          <div class="fact-item">
+            <div class="fact-icon">🤖</div>
+            <div>
+              <div class="fact-label">Current obsession</div>
+              <div class="fact-value">AI automations & vibe coding</div>
+            </div>
+          </div>
+          <div class="fact-item">
+            <div class="fact-icon">🎓</div>
+            <div>
+              <div class="fact-label">Education</div>
+              <div class="fact-value">MS International Project Management, 2025</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="fade-in">
+      <p class="section-label">// what I've built</p>
+      <h2 class="section-title">Projects</h2>
+
+      <div class="category-tabs">
+        <button class="cat-tab active" data-filter="all">All</button>
+        <button class="cat-tab" data-filter="automation">Automations</button>
+        <button class="cat-tab" data-filter="ai">AI</button>
+        <button class="cat-tab" data-filter="product">Product</button>
+        <button class="cat-tab" data-filter="vibe">Vibe Coding</button>
+      </div>
+
+      <div class="projects-grid" id="projectsGrid">
+        <!-- Projects injected by JS -->
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="fade-in">
+      <p class="section-label">// where I've been</p>
+      <h2 class="section-title">Experience</h2>
+      <div class="exp-list">
+        <div class="exp-item">
+          <div class="exp-date">2022 — Now</div>
+          <div>
+            <div class="exp-role">Product Evangelist</div>
+            <div class="exp-company">vFairs LLC</div>
+            <div class="exp-desc">Built automation systems saving 7+ hours/week, including Jira-to-announcement pipelines, SLA monitoring tools, and Slack integrations. Bridged product, engineering, and customer teams at a SaaS event platform serving conferences, job fairs, and trade shows globally.</div>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-date">2023 — Now</div>
+          <div>
+            <div class="exp-role">Founder</div>
+            <div class="exp-company">AutoClarity</div>
+            <div class="exp-desc">Built and scaled a Shopify dropshipping store for automotive cleaning tools targeting the US market. Developed TikTok-focused marketing strategy targeting the #cartok community. Handled product sourcing, branding, and full-funnel marketing.</div>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-date">2023 — 2025</div>
+          <div>
+            <div class="exp-role">MS International Project Management</div>
+            <div class="exp-company">University of Rome</div>
+            <div class="exp-desc">Graduated 2025. Focused on cross-cultural project delivery, agile methodologies, and strategic management — applied directly to real-world product and automation work.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOOLS -->
+    <section id="tools" class="fade-in">
+      <p class="section-label">// my stack</p>
+      <h2 class="section-title">Tools & Stack</h2>
+      <div class="tools-grid">
+        <div class="tool-item"><div class="tool-icon">⚡</div><div class="tool-name">Make.com</div></div>
+        <div class="tool-item"><div class="tool-icon">🤖</div><div class="tool-name">Claude AI</div></div>
+        <div class="tool-item"><div class="tool-icon">💬</div><div class="tool-name">WhatsApp API</div></div>
+        <div class="tool-item"><div class="tool-icon">🔧</div><div class="tool-name">Jira</div></div>
+        <div class="tool-item"><div class="tool-icon">💜</div><div class="tool-name">Slack API</div></div>
+        <div class="tool-item"><div class="tool-icon">🛍️</div><div class="tool-name">Shopify</div></div>
+        <div class="tool-item"><div class="tool-icon">📊</div><div class="tool-name">Google Workspace</div></div>
+        <div class="tool-item"><div class="tool-icon">🌐</div><div class="tool-name">HTML / CSS / JS</div></div>
+        <div class="tool-item"><div class="tool-icon">🐙</div><div class="tool-name">GitHub</div></div>
+        <div class="tool-item"><div class="tool-icon">🔗</div><div class="tool-name">REST APIs</div></div>
+        <div class="tool-item"><div class="tool-icon">📱</div><div class="tool-name">TikTok Ads</div></div>
+        <div class="tool-item"><div class="tool-icon">🎯</div><div class="tool-name">Notion</div></div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>Designed & built by <span>Shahroze Rizvi</span> — Rome, Italy</div>
+  <div>shahrozerizvi.github.io</div>
+</footer>
+
+<script>
+  // ─── PROJECTS DATA ───
+  // To add a new project, just add a new object to this array
+  const projects = [
+    {
+      name: "FlashJobs 2.0",
+      category: "ai",
+      desc: "WhatsApp bot that generates tailored CVs using AI. Users send their profile and a job description — the bot returns a fully formatted, ATS-optimised CV in seconds. Launched with a retro gaming aesthetic.",
+      impact: [{ value: "< 60s", label: "CV generated" }, { value: "ATS+", label: "Optimised" }],
+      tags: ["Claude AI", "WhatsApp API", "Make.com", "CV Generation"],
+      github: "#",
+      live: null
+    },
+    {
+      name: "Jira → Announcements Pipeline",
+      category: "automation",
+      desc: "End-to-end Make.com workflow that monitors Jira for completed product tickets and automatically generates formatted product announcements published to Slack and Notion. Eliminated 7 hours of weekly manual work.",
+      impact: [{ value: "7hrs", label: "Saved/week" }, { value: "100%", label: "Automated" }],
+      tags: ["Make.com", "Jira API", "Slack", "Notion"],
+      github: null,
+      live: null
+    },
+    {
+      name: "SLA Monitor",
+      category: "automation",
+      desc: "Automated SLA tracking system for product management that monitors ticket resolution times, sends proactive Slack alerts before breaches occur, and generates weekly compliance reports.",
+      impact: [{ value: "0", label: "Missed SLAs" }, { value: "Real-time", label: "Alerts" }],
+      tags: ["Make.com", "Jira", "Slack API", "Webhooks"],
+      github: null,
+      live: null
+    },
+    {
+      name: "AutoClarity Store",
+      category: "product",
+      desc: "Built and scaled a Shopify dropshipping brand for automotive cleaning tools targeting the US market. Full funnel from product sourcing to TikTok-first marketing targeting the #cartok community.",
+      impact: [{ value: "US", label: "Market" }, { value: "TikTok", label: "Channel" }],
+      tags: ["Shopify", "TikTok Ads", "Dropshipping", "Branding"],
+      github: null,
+      live: "#"
+    },
+    {
+      name: "Gong Transcript Processor",
+      category: "automation",
+      desc: "Automation that pulls sales call transcripts from Gong, runs them through AI to extract key insights, objections, and action items, then posts a structured summary to the relevant Slack channel.",
+      impact: [{ value: "AI", label: "Insights" }, { value: "Auto", label: "Summaries" }],
+      tags: ["Make.com", "Gong API", "Claude AI", "Slack"],
+      github: null,
+      live: null
+    },
+    {
+      name: "vFairs Event Audit Tool",
+      category: "product",
+      desc: "Built an internal auditing system for vFairs event setups — automatically checks event configurations against a quality checklist and flags issues to the project team before go-live.",
+      impact: [{ value: "QA", label: "Automated" }, { value: "Pre-launch", label: "Safety net" }],
+      tags: ["Make.com", "vFairs API", "Google Sheets", "Slack"],
+      github: null,
+      live: null
+    }
+  ];
+
+  // ─── RENDER PROJECTS ───
+  const grid = document.getElementById('projectsGrid');
+
+  function renderProjects(filter) {
+    grid.innerHTML = '';
+    const filtered = filter === 'all' ? projects : projects.filter(p => p.category === filter);
+    filtered.forEach(p => {
+      const catClass = { automation: 'cat-automation', ai: 'cat-ai', product: 'cat-product', vibe: 'cat-vibe' }[p.category];
+      const catLabel = { automation: 'Automation', ai: 'AI', product: 'Product', vibe: 'Vibe Coding' }[p.category];
+      const impactHTML = p.impact.map(i => `
+        <div class="impact-item">
+          <div class="impact-value">${i.value}</div>
+          <div class="impact-label">${i.label}</div>
+        </div>`).join('');
+      const tagsHTML = p.tags.map(t => `<span class="tag">${t}</span>`).join('');
+      const linksHTML = [
+        p.github ? `<a href="${p.github}" target="_blank">↗ GitHub</a>` : '',
+        p.live ? `<a href="${p.live}" target="_blank">↗ Live</a>` : ''
+      ].join('');
+
+      grid.innerHTML += `
+        <div class="project-card">
+          <div class="project-card-header">
+            <span class="project-cat-badge ${catClass}">${catLabel}</span>
+            <div class="project-links">${linksHTML}</div>
+          </div>
+          <div class="project-name">${p.name}</div>
+          <div class="project-desc">${p.desc}</div>
+          <div class="project-impact">${impactHTML}</div>
+          <div class="project-tags">${tagsHTML}</div>
+        </div>`;
+    });
+  }
+
+  renderProjects('all');
+
+  // ─── FILTER TABS ───
+  document.querySelectorAll('.cat-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      renderProjects(tab.dataset.filter);
+    });
+  });
+
+  // ─── TYPEWRITER ───
+  const roles = ['product_evangelist', 'automation_architect', 'ai_builder', 'vibe_coder'];
+  let ri = 0, ci = 0, deleting = false;
+  const tw = document.getElementById('typewriter');
+
+  function type() {
+    const current = roles[ri];
+    if (!deleting) {
+      tw.textContent = current.slice(0, ++ci);
+      if (ci === current.length) { deleting = true; setTimeout(type, 1800); return; }
+    } else {
+      tw.textContent = current.slice(0, --ci);
+      if (ci === 0) { deleting = false; ri = (ri + 1) % roles.length; }
+    }
+    setTimeout(type, deleting ? 40 : 80);
+  }
+  type();
+
+  // ─── CURSOR GLOW ───
+  const glow = document.getElementById('cursorGlow');
+  document.addEventListener('mousemove', e => {
+    glow.style.left = e.clientX + 'px';
+    glow.style.top = e.clientY + 'px';
+  });
+
+  // ─── SCROLL SPY ───
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav a');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector(`.nav a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { threshold: 0.3 });
+
+  sections.forEach(s => observer.observe(s));
+
+  // ─── FADE IN ───
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const fadeObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  fadeEls.forEach(el => fadeObserver.observe(el));
+</script>
+</body>
+</html>

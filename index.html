@@ -552,7 +552,7 @@
       display: flex;
       gap: 40px;
       align-items: center;
-      animation: client-scroll 30s linear infinite;
+      animation: client-scroll 50s linear infinite;
       width: max-content;
     }
     .client-marquee-track:hover { animation-play-state: paused; }
@@ -634,7 +634,7 @@
     .proj-preview-inner {
       display: flex;
       gap: 12px;
-      animation: proj-scroll 26s linear infinite;
+      animation: proj-scroll 45s linear infinite;
       width: max-content;
     }
     .proj-preview-inner:hover { animation-play-state: paused; }
@@ -734,7 +734,7 @@
       align-items: center;
       gap: 0;
       width: max-content;
-      animation: marquee-scroll 28s linear infinite;
+      animation: marquee-scroll 48s linear infinite;
       white-space: nowrap;
     }
 
@@ -1021,7 +1021,7 @@
         </div>
         <div class="stats-grid">
           <div class="stat-box"><div class="stat-num">8+</div><div class="stat-lbl">Years in Product & Project Management</div></div>
-          <div class="stat-box"><div class="stat-num">12+</div><div class="stat-lbl">Solutions shipped</div></div>
+          <div class="stat-box"><div class="stat-num">13+</div><div class="stat-lbl">Solutions shipped</div></div>
           <div class="stat-box"><div class="stat-num">9h+</div><div class="stat-lbl">Saved per week via AI Automations</div></div>
           <div class="stat-box"><div class="stat-num">16+</div><div class="stat-lbl">Enterprise clients served</div></div>
         </div>
@@ -1127,6 +1127,7 @@ const projects = [
   { name:"FlashJobs 1.0", category:"automation", desc:"The original FlashJobs — a Make.com automation that takes a Google Form submission (email, industry, job title, current CV link) and within 60 seconds scrapes Indeed, FlexJobs, and LinkedIn for matching jobs posted in the last 7 days, then delivers 2 tailored, ATS-proof CV Google Docs straight to your inbox. No more manual job board trawling or ChatGPT prompting.", impact:[{value:"60s",label:"Jobs + CV in inbox"},{value:"3+",label:"Job boards scraped"}], tags:["Make.com","Google Forms","Google Docs","Web Scraping","Claude AI"], github:null, live:null, link:"https://www.linkedin.com/posts/syedshahroze_are-you-an-entry-to-senior-level-professional-activity-7393370026914938880-A9O_?utm_source=share&utm_medium=member_desktop&rcm=ACoAABnaQ-UBwe1cxC8v-x8_Ok7d_gXAXI2-Eqs" },
   { name:"AI Recipe App — for Mom 🍛", category:"vibe", desc:"My very first vibe-coded app — built for my mom who stressed every day over \'Aaj khanay main kya pakayen?\' Select ingredients already in your kitchen and get instant recipe suggestions. Built the same idea in both Lovable and Replit to compare — Lovable won on UI, prompt understanding, and speed. Currently focused on South-Asian (Pakistani & Indian) cuisine, built with love.", impact:[{value:"1st",label:"Vibe-coded app"},{value:"😊",label:"Mom approved"}], tags:["Lovable","Replit","AI","Web App"], github:null, live:null, link:"https://www.linkedin.com/posts/syedshahroze_ai-webdevelopment-nocode-activity-7332062899303018496-fjJm?utm_source=share&utm_medium=member_desktop&rcm=ACoAABnaQ-UBwe1cxC8v-x8_Ok7d_gXAXI2-Eqs" },
   { name:"SmartTrack", category:"vibe", desc:"Vibe-coded with Lovable & Vercel — a personal project tracker that connects all client Google Sheets in one dashboard, surfaces upcoming tasks for the next 5–7 days, auto-categorises them as high or medium priority based on days remaining, and syncs everything directly to Google Calendar as individual project events.", impact:[{value:"4+",label:"Sheets connected"},{value:"Auto",label:"Calendar sync"}], tags:["Lovable","Vercel","Google Sheets","Google Calendar"], github:null, live:null, link:"https://www.linkedin.com/posts/syedshahroze_i-built-smarttrack-a-personal-projects-activity-7402726751308546049-Jl9M?utm_source=share&utm_medium=member_desktop&rcm=ACoAABnaQ-UBwe1cxC8v-x8_Ok7d_gXAXI2-Eqs" },
+  { name:"Sales Enablement Bot", category:"automation", desc:"Our sales team was scrambling through Google Drive on live client calls — 'Do we have a pharma demo?' 'Where's the Cvent battlecard?' I tried Lindy. Then Relevance AI. Then realised enterprise AI platforms were overkill for a simple retrieval problem. Built two Slack bots in Make in a day. SalesBot pulls from a 134-row Sales Enablement Hub of decks, pricing, and competitor docs. EventBot searches across 10 knowledge files simultaneously — demos, case studies, battlecards, testimonials. One query. Instant link in the thread. No more digging through Drive while a client waits.", impact:[{value:"< 5s",label:"Retrieval time"},{value:"10+",label:"Knowledge files searched"}], tags:["Make.com","GPT-4o","Slack API","Google Sheets"], github:null, live:null, link:"https://www.linkedin.com/posts/syedshahroze_salesbot-share-7455662158035554304-ET9L?utm_source=share&utm_medium=member_desktop&rcm=ACoAABnaQ-UBwe1cxC8v-x8_Ok7d_gXAXI2-Eqs" },
   { name:"Chandler Bing — SlackBot", category:"automation", desc:"Could this BE any more fun? Built a Slack bot with the full personality of Chandler Bing from F.R.I.E.N.D.S. It auto-creates Slack channels for new projects, invites the relevant stakeholders, and greets everyone with witty, sarcastic Chandler-style welcome messages. Functional automation wrapped in a pop-culture personality. Pivot. PIVAAAATTTTT!!", impact:[{value:"😏",label:"Sarcasm level"},{value:"Auto",label:"Channel setup"}], tags:["Make.com","Slack API","AI Personality","Webhooks"], github:null, live:null, link:"https://www.linkedin.com/posts/syedshahroze_chandler-bing-our-very-own-slackbot-activity-7390153824729972736-65cO?utm_source=share&utm_medium=member_desktop&rcm=ACoAABnaQ-UBwe1cxC8v-x8_Ok7d_gXAXI2-Eqs" },
   { name:"JSON → Excel Converter", category:"automation", desc:"Built with Blink.new in one sitting while the dev ticket sat untouched in the backlog. A clean web app that converts raw JSON into a readable, formatted table and exports it as a downloadable Excel file — no dev dependency, no waiting. Scratched my own itch and shipped it the same day.", impact:[{value:"0",label:"Dev tickets needed"},{value:"1 day",label:"Built & shipped"}], tags:["Blink.new","JSON","Excel","Vibe Coding"], github:null, live:null, link:"https://www.linkedin.com/posts/syedshahroze_json-vibecoding-jsonextractor-activity-7383162870836006912-JGJe?utm_source=share&utm_medium=member_desktop&rcm=ACoAABnaQ-UBwe1cxC8v-x8_Ok7d_gXAXI2-Eqs" },
   { name:"SLA Monitor & Alerting", category:"automation", desc:"Automated SLA tracking that monitors ticket resolution times, fires proactive Slack alerts before breaches, and generates weekly compliance reports for product and customer success teams.", impact:[{value:"0",label:"Missed SLAs"},{value:"Live",label:"Alerts"}], tags:["Make.com","Jira","Slack API","Webhooks"], github:null, live:null, link:"https://www.linkedin.com/in/syedshahroze/" },
